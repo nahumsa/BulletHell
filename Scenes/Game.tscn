@@ -8,14 +8,18 @@
 script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1022.0
-margin_bottom = 596.0
+margin_right = 728.0
+margin_bottom = 691.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 355.067, 571.311 )
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 300, 300 )
-rotate_angle = 0.05
+position = Vector2( 503.574, 95.3574 )
+rotate_angle = 0.2
+
+[node name="Enemy2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 144.163, 82.7601 )

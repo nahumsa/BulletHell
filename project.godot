@@ -24,6 +24,11 @@ config/name="BulletHell"
 run/main_scene="res://Scenes/Game.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=730
+window/size/height=696
+
 [gdnative]
 
 singletons=[ "res://git_api.gdnlib" ]

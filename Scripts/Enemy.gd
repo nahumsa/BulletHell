@@ -11,8 +11,8 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	rotate(rotate_angle)
+func _process(delta):
+	rotate(rotate_angle * delta)
 	_generate_scene(bullet_scene)
 
 # This generates a scene
@@ -29,15 +29,15 @@ func _generate_scene(scene):
 
 # Changes the position of the bullet
 func _change_position_bullet(instance_scene):
-	instance_scene.position = self.position
+	instance_scene.position = self.position 
 	instance_scene.rotation = self.rotation
 	
 	var change_x = _random_square_xy()
 	var change_y = _random_square_xy()
-	
+
 	instance_scene.position.x += change_x
 	instance_scene.position.y += change_y
 
 # Gives the X and Y at random, which are the same, and generates a square
 func _random_square_xy():
-	return 100*2*(randf() - 0.5)
+	return 32*(randf() - 0.5)
