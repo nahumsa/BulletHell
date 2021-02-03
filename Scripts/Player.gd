@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export (int) var speed = 200
+export (int) var speed = 4000
 var velocity = Vector2()
 
 func _ready():
@@ -12,12 +12,7 @@ func _physics_process(delta):
 
 func _get_input():
 	velocity = Vector2()
-	if Input.is_action_pressed('ui_right'):
-		velocity.x += 1
-	if Input.is_action_pressed('ui_left'):
-		velocity.x -= 1
-	if Input.is_action_pressed('ui_down'):
-		velocity.y += 1
-	if Input.is_action_pressed('ui_up'):
-		velocity.y -= 1
-	velocity = velocity.normalized() * speed
+	var x_input = Input.get_action_strength('ui_right') - Input.get_action_strength('ui_left')
+	var y_input = Input.get_action_strength('ui_down') - Input.get_action_strength('ui_up')
+	velocity.x += x_input * speed 
+	velocity.y += y_input * speed 
