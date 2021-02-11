@@ -12,5 +12,10 @@ texture = ExtResource( 1 )
 [node name="BulletRayCast" type="RayCast2D" parent="."]
 position = Vector2( -5.37431, -3.24213 )
 enabled = true
-cast_to = Vector2( 1, 2 )
+cast_to = Vector2( 0.5, 1.5 )
 collide_with_areas = true
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -3.93328, -0.132582 )
+scale = Vector2( 0.23544, 0.412217 )
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_screen_exited"]

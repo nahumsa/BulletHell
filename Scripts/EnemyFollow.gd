@@ -2,19 +2,21 @@ extends Node2D
 
 # Create an export variable to change in scenes
 export(float) var rotate_angle
+export(float) var bullet_timer = 2
 
 # Setup variables
 var bullet_scene = load("res://Scenes/Bullet.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$"Add bullet timer".set_wait_time(bullet_timer)
+	$"Add bullet timer".start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	rotate(rotate_angle * delta)
-	_generate_scene(bullet_scene)
-
+	
 # This generates a scene
 func _generate_scene(scene):
 	
@@ -32,12 +34,13 @@ func _change_position_bullet(instance_scene):
 	instance_scene.position = self.position 
 	instance_scene.rotation = self.rotation
 	
-	var change_x = _random_square_xy()
-	var change_y = _random_square_xy()
-
-	instance_scene.position.x += change_x
-	instance_scene.position.y += change_y
-
-# Gives the X and Y at random, which are the same, and generates a square
-func _random_square_xy():
-	return 32*(randf() - 0.5)
+	_follow_player(instance_scene)
+	
+func _follow_player(instance_scene):
+	var player_position = get_parent().get_node("Player").position
+	var player_direction = (player_position - self.global_position).normalized()
+	instance_scene.direction = player_direction
+	
+	
+func _timeout():
+	_generate_scene(bullet_scene)
