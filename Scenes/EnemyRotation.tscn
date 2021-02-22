@@ -11,4 +11,7 @@ rotate_angle = 0.5
 texture = ExtResource( 1 )
 
 [node name="Add Bullet Timer" type="Timer" parent="."]
+
+[node name="Visibility Notifier" type="VisibilityNotifier2D" parent="."]
 [connection signal="timeout" from="Add Bullet Timer" to="." method="_timeout"]
+[connection signal="screen_exited" from="Visibility Notifier" to="." method="_screen_exited"]

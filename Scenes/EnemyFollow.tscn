@@ -13,4 +13,9 @@ modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 1 )
 
 [node name="Add bullet timer" type="Timer" parent="."]
+
+[node name="Visibility Notifier" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 0.297294, 0.297302 )
+scale = Vector2( 1.50541, 1.56487 )
 [connection signal="timeout" from="Add bullet timer" to="." method="_timeout"]
+[connection signal="screen_exited" from="Visibility Notifier" to="." method="_screen_exited"]

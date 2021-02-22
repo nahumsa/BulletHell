@@ -4,7 +4,7 @@ extends Node2D
 export(float) var rotate_angle
 export(int) var n_bullets = 1
 export(float) var bullet_timer = 2
-export(float) var movement_y = 2
+export(float) var y_velocity = 50
 # Setup variables
 var bullet_scene = load("res://Scenes/Bullet.tscn")
 
@@ -16,8 +16,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	rotate(rotate_angle * delta)
-	self.position.y += movement_y * delta
-	
+	_movement(delta)
+
+func _movement(delta):
+	self.position.y += y_velocity * delta
+
 # This generates a scene
 func _generate_scene(scene, index=0):
 	
@@ -62,3 +65,7 @@ func _random_square_xy():
 func _timeout():
 	for index in range(n_bullets):
 		_generate_scene(bullet_scene, index)
+
+
+func _screen_exited():
+	queue_free()
