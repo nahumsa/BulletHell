@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/EnemyRotation.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/EnemyFollow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/EnemySpawner.gd" type="Script" id=3]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,11 +11,9 @@ script = ExtResource( 1 )
 position = Vector2( 355.067, 571.311 )
 speed = 300
 
-[node name="Enemy Rotation" parent="." instance=ExtResource( 3 )]
-position = Vector2( 503.574, 95.3574 )
-rotate_angle = 0.2
-n_bullets = 2
-bullet_timer = 0.5
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2( 356.382, 25.4559 )
+script = ExtResource( 3 )
 
-[node name="Enemy Follow" parent="." instance=ExtResource( 4 )]
-position = Vector2( 206.014, 91.7938 )
+[node name="Spawn Timer" type="Timer" parent="Spawner"]
+[connection signal="timeout" from="Spawner/Spawn Timer" to="Spawner" method="_spawn_timeout"]

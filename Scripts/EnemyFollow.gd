@@ -3,6 +3,7 @@ extends Node2D
 # Create an export variable to change in scenes
 export(float) var rotate_angle
 export(float) var bullet_timer = 2
+export(float) var y_velocity = 3
 
 # Setup variables
 var bullet_scene = load("res://Scenes/Bullet.tscn")
@@ -16,6 +17,10 @@ func _ready():
 func _process(delta):
 	
 	rotate(rotate_angle * delta)
+	_movement(delta)
+	
+func _movement(delta):
+	self.position.y += y_velocity * delta
 	
 # This generates a scene
 func _generate_scene(scene):
@@ -37,7 +42,7 @@ func _change_position_bullet(instance_scene):
 	_follow_player(instance_scene)
 	
 func _follow_player(instance_scene):
-	var player_position = get_parent().get_node("Player").position
+	var player_position = get_parent().get_parent().get_node("Player").position
 	var player_direction = (player_position - self.global_position).normalized()
 	instance_scene.direction = player_direction
 	
