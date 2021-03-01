@@ -13,9 +13,6 @@ func _ready():
 	$"Text Timer".set_wait_time(transition_time)
 	$"Text Timer".start()
 
-func _process(delta):
-	pass
-
 func _Timer_timeout():
 	_change_text()
 

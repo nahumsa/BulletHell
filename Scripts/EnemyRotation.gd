@@ -1,12 +1,13 @@
 extends Node2D
 
-# Create an export variable to change in scenes
+# Variables
+var bullet_scene = load("res://Scenes/Bullet.tscn")
+
+# Export variables
 export(float) var rotate_angle
 export(int) var n_bullets = 1
 export(float) var bullet_timer = 2
 export(float) var y_velocity = 50
-# Setup variables
-var bullet_scene = load("res://Scenes/Bullet.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

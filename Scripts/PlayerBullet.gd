@@ -12,9 +12,8 @@ func _ready():
 func _process(delta):
 	self.position += direction.rotated(self.rotation) * speed * delta
 	if $BulletRayCast.is_colliding():
-		var col_obj = $BulletRayCast.get_collider().get_parent().get_node("Player")
-		if col_obj.type == "PLAYER":
-			col_obj.health -= 1
+		var col_obj = $BulletRayCast.get_collider().get_parent().get_node()
+		if col_obj.type == "ENEMY":
 			queue_free()
 
 
