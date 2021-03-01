@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
+var type = "PLAYER"
+
 export (int) var speed = 4000
+export (int) var health = 5
 var velocity = Vector2()
 
 func _ready():

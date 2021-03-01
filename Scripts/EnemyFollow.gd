@@ -50,9 +50,5 @@ func _follow_player(instance_scene):
 func _timeout():
 	_generate_scene(bullet_scene)
 
-
-
-
 func _screen_exited():
-	print("Exited!")
 	queue_free()

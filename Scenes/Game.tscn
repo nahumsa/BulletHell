@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/EnemySpawner.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/IntroText.tscn" type="PackedScene" id=4]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,7 +15,13 @@ speed = 300
 [node name="Spawner" type="Node2D" parent="."]
 position = Vector2( 356.382, 25.4559 )
 script = ExtResource( 3 )
-spawn_timer = 2.0
+spawn_timer = 3.0
 
 [node name="Spawn Timer" type="Timer" parent="Spawner"]
+
+[node name="Text" parent="." instance=ExtResource( 4 )]
+margin_left = 58.0
+margin_top = 240.0
+margin_right = 623.0
+margin_bottom = 270.0
 [connection signal="timeout" from="Spawner/Spawn Timer" to="Spawner" method="_spawn_timeout"]
