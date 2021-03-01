@@ -2,6 +2,7 @@ extends Node2D
 
 # Variables
 var bullet_scene = load("res://Scenes/Bullet.tscn")
+var type = "ENEMY"
 
 # Export variables
 export(float) var rotate_angle

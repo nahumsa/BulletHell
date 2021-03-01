@@ -11,6 +11,7 @@ func _ready():
 
 func _process(delta):
 	self.position += direction.rotated(self.rotation) * speed * delta
+	
 	if $BulletRayCast.is_colliding():
 		var col_obj = $BulletRayCast.get_collider().get_parent().get_node("Player")
 		

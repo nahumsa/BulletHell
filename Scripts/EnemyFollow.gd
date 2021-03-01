@@ -1,14 +1,14 @@
 extends Node2D
 
+# Setup variables
+var type = "ENEMY"
+var bullet_scene = load("res://Scenes/Bullet.tscn")
+
 # Create an export variable to change in scenes
 export(float) var rotate_angle
 export(float) var bullet_timer = 2
 export(float) var y_velocity = 3
 
-# Setup variables
-var bullet_scene = load("res://Scenes/Bullet.tscn")
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$"Add bullet timer".set_wait_time(bullet_timer)
 	$"Add bullet timer".start()

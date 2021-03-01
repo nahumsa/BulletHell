@@ -1,18 +1,18 @@
 extends Node2D
 
 # Variables
-var direction = Vector2(1, 0)
+var direction = Vector2(0, -1)
 
 # Exports
 export var speed = 200
 
-func _ready():
-	pass 
-
 func _process(delta):
-	self.position += direction.rotated(self.rotation) * speed * delta
+	self.position += direction * speed * delta
+	
+	# Check Collision
 	if $BulletRayCast.is_colliding():
-		var col_obj = $BulletRayCast.get_collider().get_parent().get_node()
+		var col_obj = $BulletRayCast.get_collider()
+		print(col_obj)
 		if col_obj.type == "ENEMY":
 			queue_free()
 
