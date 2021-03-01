@@ -35,7 +35,6 @@ func _get_input_keyboard():
 		_generate_scene(bullet)
 
 func _generate_scene(scene):
-	
 	# Instance the scene
 	var scene_instance = scene.instance()
 	

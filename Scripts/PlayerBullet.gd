@@ -11,10 +11,11 @@ func _process(delta):
 	
 	# Check Collision
 	if $BulletRayCast.is_colliding():
+		# get_parent because there is an area 2D
 		var col_obj = $BulletRayCast.get_collider()
-		print(col_obj)
 		if col_obj.type == "ENEMY":
 			queue_free()
+			col_obj.queue_free()
 
 
 func _screen_exited():
