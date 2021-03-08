@@ -4,16 +4,31 @@ extends KinematicBody2D
 var type = "PLAYER"
 var velocity = Vector2()
 var bullet = load("res://Scenes/PlayerBullet.tscn")
+var prev_health
+var health 
 
 # Export variables
 export (int) var speed = 4000
-export (int) var health = 5
+export (int) var max_health = 5
 export (float) var bullet_speed = 10
 
-func _ready():
-	pass # Replace with function body.
+# Signal
+signal _health_changed(health)
 
+
+# Methods
+func _init():
+	health = max_health
+	
+func _health_change(health):
+	return health
+	
 func _physics_process(_delta):
+	
+	if prev_health != health:
+		emit_signal("_health_changed", health)
+	
+	prev_health = health
 	_get_input_keyboard()
 	velocity = move_and_slide(velocity)
 
@@ -31,6 +46,7 @@ func _get_input_keyboard():
 	var y_input = Input.get_action_strength('ui_down') - Input.get_action_strength('ui_up')
 	velocity.x += x_input * speed 
 	velocity.y += y_input * speed 
+	
 	if Input.is_action_just_pressed("ui_accept"):
 		_generate_scene(bullet)
 

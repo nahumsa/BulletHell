@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/EnemySpawner.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/IntroText.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Interface.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,4 +25,7 @@ margin_left = 58.0
 margin_top = 240.0
 margin_right = 623.0
 margin_bottom = 270.0
+
+[node name="Interface" parent="." instance=ExtResource( 5 )]
+[connection signal="_health_changed" from="Player" to="Interface" method="_on_Player_health_changed"]
 [connection signal="timeout" from="Spawner/Spawn Timer" to="Spawner" method="_spawn_timeout"]
